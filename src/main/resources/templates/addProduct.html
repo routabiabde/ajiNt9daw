@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Add Clothing Product</title>
+    <script>
+        function submitForm(event) {
+            event.preventDefault(); // Prevent the default form submission
+
+            const form = document.getElementById('productForm');
+            const formData = new FormData(form);
+
+            // Convert form data to JSON
+            const jsonData = {};
+            formData.forEach((value, key) => {
+                jsonData[key] = value;
+            });
+
+            // Send JSON data via fetch API
+            fetch('/api/clothing-products/save', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(jsonData)
+            })
+            .then(response => {
+                if (response.ok) {
+                    alert('Product added successfully!');
+                    form.reset();
+                } else {
+                    alert('Failed to add product.');
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('An error occurred.');
+            });
+        }
+    </script>
+</head>
+<body>
+    <h1>Add Clothing Product</h1>
+    <form id="productForm" onsubmit="submitForm(event)">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required><br><br>
+
+        <label for="brand">Brand:</label>
+        <input type="text" id="brand" name="brand" required><br><br>
+
+        <label for="price">Price:</label>
+        <input type="number" id="price" name="price" step="0.01" required><br><br>
+
+        <label for="urlImage">Image URL:</label>
+        <input type="text" id="urlImage" name="urlImage"><br><br>
+
+        <label for="description">Description:</label>
+        <textarea id="description" name="description"></textarea><br><br>
+
+        <label for="category">Category:</label>
+        <input type="text" id="category" name="category" value="Clothing" readonly><br><br>
+
+        <label for="size">Size:</label>
+        <input type="text" id="size" name="size" required><br><br>
+
+        <label for="color">Color:</label>
+        <input type="text" id="color" name="color" required><br><br>
+
+        <label for="material">Material:</label>
+        <input type="text" id="material" name="material" required><br><br>
+
+        <label for="gender">Gender:</label>
+        <select id="gender" name="gender" required>
+            <option value="Male">Male</option>
+            <option value="Female">Female</option>
+            <option value="Unisex">Unisex</option>
+        </select><br><br>
+
+        <label for="season">Season:</label>
+        <input type="text" id="season" name="season" required><br><br>
+
+        <label for="brandStyle">Brand Style:</label>
+        <input type="text" id="brandStyle" name="brandStyle" required><br><br>
+
+        <button type="submit">Add Clothing Product</button>
+    </form>
+</body>
+</html>
