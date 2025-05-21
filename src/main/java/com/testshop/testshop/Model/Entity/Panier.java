@@ -15,11 +15,15 @@ import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 
 @Data
+@Setter
+@Getter
 @Entity
 public class Panier {
     @Id
@@ -33,5 +37,12 @@ public class Panier {
     @OneToMany(mappedBy = "panier", cascade = CascadeType.ALL)
     @JsonManagedReference
     private List<PanierItem> items;
+
+    public void setClient(Client client){
+        this.client = client;
+    }
+
+   
+
 
 }

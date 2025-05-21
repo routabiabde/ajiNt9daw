@@ -11,8 +11,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class ElectronicProduct extends Product {
-    private String brand;
-    private String model;
+  
     private String warrantyPeriod; // e.g., 2 years
     private String powerConsumption; // e.g., 100W
     private String dimensions; // e.g., 10x20x5 cm

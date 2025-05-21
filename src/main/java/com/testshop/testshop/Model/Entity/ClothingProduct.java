@@ -4,6 +4,7 @@ import org.springframework.data.mapping.AccessOptions.GetOptions.GetNulls;
 
 import jakarta.annotation.Generated;
 import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -20,7 +21,8 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class ClothingProduct extends Product {
-    private String size; // Changed to String for flexibility (e.g., S, M, L, XL)
+    @Column
+    private String size;
     private String color;
     private String material;
     private String gender; // e.g., Male, Female, Unisex
