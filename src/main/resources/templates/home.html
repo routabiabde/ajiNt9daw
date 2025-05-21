@@ -12,7 +12,7 @@
 <script>
    
     function addToPanier(productId) {
-        const quantity = 2; // Default quantity set to 2
+        const quantity = 1; // Default quantity set to 2
 
         // Send a POST request to the backend to add the product to the panier
         fetch(`/api/panier/add-to-panier?productId=${productId}&quantite=${quantity}`, {
